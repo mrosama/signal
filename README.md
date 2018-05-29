@@ -1,5 +1,5 @@
 # websignal
-
+chrome://settings/content
 //for ssl
 <link rel="manifest" href="/manifest.json" />
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>

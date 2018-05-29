@@ -47,15 +47,12 @@ OneSignal.on('subscriptionChange', function (isSubscribed) {
   });
   OneSignal.sendTag("user_type", "vip");  
 /*
-OneSignal.on('subscriptionChange', function (isSubscribed) {
-console.log("The user's subscription state is now:", isSubscribed);
-if(isSubscribed) {
-OneSignal.getUserId(function(userId) {
-console.log("OneSignal User ID:", userId);
+ 
+  OneSignal.sendTag("key", "value", function(tagsSent) {
+    // Callback called when tags have finished sending
+  });
 
-       });
-   }
- });*/
+*/
 
 
   });

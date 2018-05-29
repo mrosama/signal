@@ -11,27 +11,45 @@
 <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
 <script>
   var OneSignal = window.OneSignal || [];
+  OneSignal.push(["init", {
+    appId: "9caa036f-8bac-48b3-bc31-f92b5a8112d2",
+    autoRegister: true,
+    notifyButton: {
+      enable: true /* Set to false to hide */
+    },
+    welcomeNotification: {
+      "title": "My Custom Title",
+      "message": "Thanks for subscribing!",
+      // "url": "" /* Leave commented for the notification to not open a window on Chrome and Firefox (on Safari, it opens to your webpage) */
+    },
+    promptOptions: {
+      /* actionMessage limited to 90 characters */
+      actionMessage: "We'd like to show you notifications for the latest news and updates.",
+      /* acceptButtonText limited to 15 characters */
+      acceptButtonText: "ALLOW",
+      /* cancelButtonText limited to 15 characters */
+      cancelButtonText: "NO THANKS"
+    }
+  }]);
   OneSignal.push(function() {
-    OneSignal.init({
-      appId: "9caa036f-8bac-48b3-bc31-f92b5a8112d2",
-    });
+    OneSignal.showHttpPrompt();
 
-      OneSignal.getUserId(function(userId) {
-    console.log("OneSignal User ID:", userId);
-    // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
-  });
-               
-  OneSignal.getUserId().then(function(userId) {
-    console.log("OneSignal User ID:", userId);
-    // (Output) OneSignal User ID: 270a35cd-4dda-4b3f-b04e-41d7463a2316    
-  });
-  
+OneSignal.on('subscriptionChange', function (isSubscribed) {
+console.log("The user's subscription state is now:", isSubscribed);
+if(isSubscribed) {
+OneSignal.getUserId(function(userId) {
+console.log("OneSignal User ID:", userId);
+
+       });
+   }
+ });
+
+
   });
 </script>
-
 
  
-</script>
+ 
 
 
 </head>

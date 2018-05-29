@@ -37,7 +37,9 @@
   OneSignal.push(function() {
     OneSignal.showHttpPrompt();
 console.log('here');
-
+OneSignal.on('subscriptionChange', function (isSubscribed) {
+    console.log("The user's subscription state is now:", isSubscribed);
+  });
    OneSignal.getUserId(function(userId) {
     console.log("OneSignal User ID:", userId);
     
